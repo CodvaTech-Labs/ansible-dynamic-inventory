@@ -8,10 +8,9 @@
 - Target inventory as per tages
 
 ## Ref Link
-https://medium.com/xebia-engineering/automating-ansible-dynamic-inventory-with-jenkins-on-aws-26dfc4147887
-https://devopscube.com/setup-ansible-aws-dynamic-inventory/
+- https://medium.com/xebia-engineering/automating-ansible-dynamic-inventory-with-jenkins-on-aws-26dfc4147887
+- https://devopscube.com/setup-ansible-aws-dynamic-inventory/
 
-Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
 
 ansible-inventory command will return all ec2 instances in AWS Console
 
