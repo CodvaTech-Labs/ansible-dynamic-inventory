@@ -1,7 +1,22 @@
-# ansible-dynamic-inventory
-ansible-dynamic-inventory
+# Ansible Dynamic Inventory
+## Refer below steps if you want to rub ansible playbook on dynamic inventory
 
-[root@ip-172-31-15-249 ansible]# ansible-inventory --graph -i /etc/ansible/aws_ec2.yaml
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
+## Features
+- Dynamic Inventory
+- Target inventory as per tages
+
+## Ref Link
+https://medium.com/xebia-engineering/automating-ansible-dynamic-inventory-with-jenkins-on-aws-26dfc4147887
+https://devopscube.com/setup-ansible-aws-dynamic-inventory/
+
+Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
+
+ansible-inventory command will return all ec2 instances in AWS Console
+
+```sh
+[root@ip-172-31-15-249 ec2-user]# ansible-inventory --graph -i /etc/ansible/aws_ec2.yaml
 @all:
   |--@aws_ec2:
   |  |--ec2-15-206-88-239.ap-south-1.compute.amazonaws.com
@@ -18,3 +33,41 @@ ansible-dynamic-inventory
   |--@tag_env_prod:
   |  |--ec2-35-154-234-63.ap-south-1.compute.amazonaws.com
   |--@ungrouped:
+[root@ip-172-31-15-249 ec2-user]# 
+```
+
+
+ansible all -m command will ping all connected target IPs
+
+```sh
+[root@ip-172-31-15-249 ansible]# ansible all -m ping -i /etc/ansible/aws_ec2.yaml
+[WARNING]: Platform linux on host ec2-35-154-234-63.ap-south-1.compute.amazonaws.com is using the discovered Python interpreter at
+/usr/bin/python, but future installation of another Python interpreter could change this. See
+https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information.
+ec2-35-154-234-63.ap-south-1.compute.amazonaws.com | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": false, 
+    "ping": "pong"
+}
+```
+
+We can use tags if we want to targt only specific IPs as below 
+
+```sh
+[root@ip-172-31-15-249 ansible]# ansible tag_appname_cicidemo -m ping -i /etc/ansible/aws_ec2.yaml
+[WARNING]: Platform linux on host ec2-35-154-234-63.ap-south-1.compute.amazonaws.com is using the discovered Python interpreter at
+/usr/bin/python, but future installation of another Python interpreter could change this. See
+https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information.
+ec2-35-154-234-63.ap-south-1.compute.amazonaws.com | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": false, 
+    "ping": "pong"
+}
+```
+
+
+
