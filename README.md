@@ -40,37 +40,22 @@ ansible all -m command will ping all connected target IPs
 
 ```sh
 [root@ip-172-31-15-249 ansible]# ansible all -m ping -i /etc/ansible/aws_ec2.yaml
-[WARNING]: Platform linux on host ec2-35-154-234-63.ap-south-1.compute.amazonaws.com is using the discovered Python interpreter at
-/usr/bin/python, but future installation of another Python interpreter could change this. See
-https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information.
-ec2-35-154-234-63.ap-south-1.compute.amazonaws.com | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python"
-    }, 
-    "changed": false, 
-    "ping": "pong"
-}
 ```
 
 We can use tags if we want to targt only specific IPs as below 
 
 ```sh
+
 [root@ip-172-31-15-249 ansible]# ansible tag_appname_cicidemo -m ping -i /etc/ansible/aws_ec2.yaml
-[WARNING]: Platform linux on host ec2-35-154-234-63.ap-south-1.compute.amazonaws.com is using the discovered Python interpreter at
-/usr/bin/python, but future installation of another Python interpreter could change this. See
-https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information.
-ec2-35-154-234-63.ap-south-1.compute.amazonaws.com | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python"
-    }, 
-    "changed": false, 
-    "ping": "pong"
-}
+
 ```
 
+Ansible Playbook execution as per tags on AWS EC2 instances
 ```sh
+
 #Ansible playbook - Run parameter
 ansible-playbook demo.yml -i /etc/ansible/aws_ec2.yaml -e "host_name=tag_Name_Dashboard_Dev"
+
 ```
 
 
