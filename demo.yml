@@ -1,11 +1,10 @@
----
-- hosts: tag_Name_Dashboard_Dev
+- hosts: "{{ host_name }}"
   tasks:
-  - name: "Install httpd package"
-    yum:
+    - name: Install httpd package
+      yum:
         name: httpd
         state: latest
-  - name: "check httpd service status"
-    service:
+    - name: check httpd service status
+      service:
         name: httpd
         state: started
