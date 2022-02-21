@@ -68,5 +68,11 @@ ec2-35-154-234-63.ap-south-1.compute.amazonaws.com | SUCCESS => {
 }
 ```
 
+```sh
+#Ansible playbook - Run parameter
+ansible-playbook demo.yml -i /etc/ansible/aws_ec2.yaml -e "host_name=tag_Name_Dashboard_Dev"
+```
+
+
 
 
