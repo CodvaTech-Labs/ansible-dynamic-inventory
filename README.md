@@ -1,5 +1,5 @@
 # Ansible Dynamic Inventory
-## Refer below steps if you want to rub ansible playbook on dynamic inventory
+## Refer below steps if you want to run ansible playbook on dynamic inventory
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
